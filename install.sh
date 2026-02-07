@@ -1,5 +1,5 @@
 #!/bin/bash
-# shellcheck shell=bash
+# shell=bash
 
 # Exit on error
 set -e
