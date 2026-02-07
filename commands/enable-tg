@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Enable autostart (optional, for GUI sessions)
+if [ -f ~/.config/autostart/timeguardian.desktop.disabled ]; then
+    mv ~/.config/autostart/timeguardian.desktop.disabled ~/.config/autostart/timeguardian.desktop
+    echo "Time Guardian has been enabled."
+else
+    echo "Time Guardian is already enabled."
+fi
+
+# Start headless background process (no terminal)
+nohup python3 "/home/waffle/Applications/Open-source/Time guardian/app.py" --headless >/dev/null 2>&1 &

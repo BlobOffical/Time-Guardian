@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+import json
+import os
+import sys
+
+BASE_DIR = os.path.expanduser("~/Applications/Open-source/Time guardian")
+USAGE_FILE = os.path.join(BASE_DIR, "data/usage.json")
+CONFIG_FILE = os.path.join(BASE_DIR, "data/config.json")
+
+def load_json(path, default):
+    try:
+        with open(path, "r") as f:
+            return json.load(f)
+    except:
+        return default
+
+if not os.path.exists(USAGE_FILE) or not os.path.exists(CONFIG_FILE):
+    print("Time Guardian headless app not running yet.")
+    sys.exit(1)
+
+usage = load_json(USAGE_FILE, {"used_minutes": 0, "used_seconds": 0})
+config = load_json(CONFIG_FILE, {"daily_limit_minutes": 120, "daily_limit_seconds": 0})
+
+used_seconds = usage.get("used_minutes", 0) * 60 + usage.get("used_seconds", 0)
+limit_seconds = config.get("daily_limit_minutes", 0) * 60 + config.get("daily_limit_seconds", 0)
+
+remaining_seconds = max(limit_seconds - used_seconds, 0)
+
+used_min, used_sec = divmod(used_seconds, 60)
+rem_min, rem_sec = divmod(remaining_seconds, 60)
+
+print(f"Used: {used_min}m {used_sec}s")
+print(f"Remaining: {rem_min}m {rem_sec}s")

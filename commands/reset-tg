@@ -1,0 +1,11 @@
+#!/bin/bash
+
+BASE_DIR="$HOME/Applications/Open-source/Time guardian"
+USAGE_FILE="$BASE_DIR/data/usage.json"
+
+if [ -f "$USAGE_FILE" ]; then
+    echo '{"used_minutes": 0, "used_seconds": 0}' > "$USAGE_FILE"
+    echo "Time Guardian usage has been reset."
+else
+    echo "Usage file not found. Make sure the app has been run at least once."
+fi

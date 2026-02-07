@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Disable autostart
+if [ -f ~/.config/autostart/timeguardian.desktop ]; then
+    mv ~/.config/autostart/timeguardian.desktop ~/.config/autostart/timeguardian.desktop.disabled
+    echo "Time Guardian has been disabled."
+else
+    echo "Time Guardian is already disabled."
+fi
+
+# Kill any running headless instances
+pkill -f "app.py --headless" 2>/dev/null
