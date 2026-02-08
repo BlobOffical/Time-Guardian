@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import json
 import os
 import sys
@@ -14,13 +13,22 @@ if os.path.exists(CONFIG_FILE):
 else:
     config = {"daily_limit_minutes": 120, "daily_limit_seconds": 0}
 
-# Ask user for new limit
-try:
-    new_minutes = int(input("Enter daily limit in minutes: "))
-    new_seconds = int(input("Enter additional seconds (0 if none): "))
-except ValueError:
-    print("Invalid input. Please enter integers only.")
-    sys.exit(1)
+# Check for command-line arguments first
+if len(sys.argv) >= 3:
+    try:
+        new_minutes = int(sys.argv[1])
+        new_seconds = int(sys.argv[2])
+    except ValueError:
+        print("Invalid arguments. Please provide integers.")
+        sys.exit(1)
+else:
+    # Fallback to interactive input
+    try:
+        new_minutes = int(input("Enter daily limit in minutes: "))
+        new_seconds = int(input("Enter additional seconds (0 if none): "))
+    except ValueError:
+        print("Invalid input. Please enter integers only.")
+        sys.exit(1)
 
 # Update config
 config["daily_limit_minutes"] = max(0, new_minutes)
