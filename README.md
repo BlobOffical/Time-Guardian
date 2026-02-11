@@ -2,7 +2,7 @@
 
 # NOTE: YOU HAVE TO PLACE THIS FOLDER INTO THE PATH "/home/<username>/Applications/Open-source/Time guardian" BECUASE THEN THE COMMANDS ARE NOT GOING TO WORK
 
-## This app is open-sourec so if you know how to work with bash and python files, modify the commands to be tailored to your custom path
+## This app is open-source so if you know how to work with bash and python files, modify the commands to be tailored to your custom path
 
 Time Guardian is a headless and GUI app for tracking daily computer usage. These commands let you control and monitor your usage from the terminal.
 
