@@ -132,5 +132,6 @@ Daily limit set to 60m 15s
 
 - All commands work with the headless background app.
 - Notifications still work even if no GUI is open.
-- Paths are absolute: `/home/waffle/Applications/Open-source/Time guardian/data/`.
+- Paths are absolute: `/home/<username>/Applications/Open-source/Time guardian/data/`.
 - Make sure all scripts are executable in `/usr/local/bin`.
+## Currently notifications are broken, so if you know how to fix them, please fork my repo and fix it
